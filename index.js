@@ -13268,19 +13268,6 @@
                     log('✨🌟💖💎🦄💎💖🌟✨🌟💖💎🦄💎💖🌟✨');
                     log('');
                 }
-                await exportTable(messages);
-                // Set the number of points
-                if (hasPoints) {
-                    const text = `Points ${points}/${availablePoints}`;
-                    log(color.bold.bgCyan.black(text));
-                    core.setOutput('Points', `${points}/${availablePoints}`);
-                    await (0, output_1.setCheckRunOutput)(text);
-                }
-
-            };
-            exports.runAll = runAll;
-
-            const exportTable = async (messages) => {
                 let html = '<table border="1px solid black"><thead><tr><th>Testcase</th><th>Message</th><th>Expected</th><th>Actual</th></tr></thead><tbody>';
                 for (message of messages) {
                     html += '<tr>';
@@ -13294,6 +13281,19 @@
                 }
                 html += '</tbody></table>';
                 core.setOutput('Messages', html);
+                // Set the number of points
+                if (hasPoints) {
+                    const text = `Points ${points}/${availablePoints}`;
+                    log(color.bold.bgCyan.black(text));
+                    core.setOutput('Points', `${points}/${availablePoints}`);
+                    await (0, output_1.setCheckRunOutput)(text);
+                }
+
+            };
+            exports.runAll = runAll;
+
+            const exportTable = async (messages) => {
+
             }
             exports.exportTable = exportTable;
 
