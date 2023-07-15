@@ -13246,7 +13246,6 @@
                             output.outcome = 'error';
                             output.message = error.message;
                             output.actual = error.actual;
-                            messages.push(output);
                         }
 
                         if (error instanceof Error) {
@@ -13255,6 +13254,7 @@
                             core.setFailed(`Failed to run test '${test.name}'`);
                         }
                     }
+                    messages.push(output);
                 }
                 // Restart command processing
                 log('');
@@ -13269,6 +13269,7 @@
                     log('');
                 }
                 let html = '<table border="1px solid black"><thead><tr><th>Testcase</th><th>Message</th><th>Expected</th><th>Actual</th></tr></thead><tbody>';
+                let message;
                 for (message of messages) {
                     html += '<tr>';
                     html += '<td>${message.testcase}</td>';
