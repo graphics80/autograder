@@ -13268,20 +13268,7 @@
                     log('✨🌟💖💎🦄💎💖🌟✨🌟💖💎🦄💎💖🌟✨');
                     log('');
                 }
-                let html = '<table border="1px solid black"><thead><tr><th>Testcase</th><th>Message</th><th>Expected</th><th>Actual</th></tr></thead><tbody>';
-                let message;
-                for (message of messages) {
-                    html += '<tr>';
-                    html += '<td>${message.testcase}</td>';
-                    html += '<td>${message.message}</td>';
-                    html += '<td>${message.expected}</td>';
-                    html += '<td>${message.actual}</td>';
-                    html += '<td>${message.points}</td>';
-                    html += '<td>${message.max}</td>';
-                    html += '</tr>';
-                }
-                html += '</tbody></table>';
-                core.setOutput('Messages', html);
+                exportTable(messages);
                 // Set the number of points
                 if (hasPoints) {
                     const text = `Points ${points}/${availablePoints}`;
@@ -13294,7 +13281,20 @@
             exports.runAll = runAll;
 
             const exportTable = async (messages) => {
-
+                let html = '<table border="1px solid black"><thead><tr><th>Testcase</th><th>Message</th><th>Expected</th><th>Actual</th></tr></thead><tbody>';
+                let message;
+                for (message of messages) {
+                    html += '<tr>';
+                    html += '<td>' + message.testcase + '</td>';
+                    html += '<td>' + message.message + '</td>';
+                    html += '<td>' + message.expected + '</td>';
+                    html += '<td>' + message.actual + '</td>';
+                    html += '<td>' + message.points + '</td>';
+                    html += '<td>' + message.max + '</td>';
+                    html += '</tr>';
+                }
+                html += '</tbody></table>';
+                core.setOutput('Messages', html);
             }
             exports.exportTable = exportTable;
 
