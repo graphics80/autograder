@@ -13268,14 +13268,15 @@
                     log('✨🌟💖💎🦄💎💖🌟✨🌟💖💎🦄💎💖🌟✨');
                     log('');
                 }
+                await exportTable(messages);
                 // Set the number of points
                 if (hasPoints) {
                     const text = `Points ${points}/${availablePoints}`;
                     log(color.bold.bgCyan.black(text));
-                    core.setOutput('Points', `${points}: ${availablePoints}`);
+                    core.setOutput('Points', `${points}/${availablePoints}`);
                     await (0, output_1.setCheckRunOutput)(text);
                 }
-                exportTable(messages);
+
             };
             exports.runAll = runAll;
 
