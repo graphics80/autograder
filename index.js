@@ -13273,12 +13273,26 @@
                     const text = `Points ${points}/${availablePoints}`;
                     log(color.bold.bgCyan.black(text));
                     core.setOutput('Points', `${points}: ${availablePoints}`);
-                    core.setOutput('Messages', messages);
                     await (0, output_1.setCheckRunOutput)(text);
                 }
+                exportTable(messages);
             };
             exports.runAll = runAll;
 
+            const exportTable = async (messages) => {
+                let html = '<table border="1px solid black"><thead><tr><th>Testcase</th><th>Message</th><th>Expected</th><th>Actual</th></tr></thead><tbody>';
+                const fields = ['message', 'expected', 'actual'];
+                messages.forEach(message => {
+                    html += '<tr>';
+                    fields.forEach (key => {
+                        html += '<td>' + message[key] + '</td>';
+                    });
+                    html += '</tr>';
+                });
+                html += '</tbody></table>';
+                core.setOutput('Messages', html);
+            }
+            exports.exportTable = exportTable;
 
             /***/
         }),
