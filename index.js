@@ -13217,8 +13217,8 @@
                 log('');
                 let failed = false;
                 for (const test of tests) {
+                    let output = new TestOutputResult(test.name);
                     try {
-                        let output = new TestOutputResult(test.name);
                         output.expected = test.expected;
                         if (test.points) {
                             hasPoints = true;
