@@ -13285,7 +13285,7 @@
                 messages.forEach(message => {
                     html += '<tr>';
                     fields.forEach (key => {
-                        html += '<td>' + message[key] + '</td>';
+                        html += '<td>' + message[key].replace(/(\r\n|\n|\r)/gm, "") + '</td>';
                     });
                     html += '</tr>';
                 });
