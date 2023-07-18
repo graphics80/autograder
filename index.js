@@ -13250,9 +13250,9 @@
 
                         if (error instanceof Error) {
                             core.setFailed(error.message);
-                            output.outcome = 'error';
-                            output.message = error.text;
-                            output.actual = error.actual;
+                            output.outcome = 'severe error';
+                            output.message = error.message;
+                            output.actual = 'no output available';
                         } else {
                             core.setFailed(`Failed to run test '${test.name}'`);
                         }
