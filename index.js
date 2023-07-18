@@ -13285,7 +13285,7 @@
             exports.runAll = runAll;
 
             const exportTable = async (messages) => {
-                let html = '<table border="1px solid black"><thead><tr><th>Testcase</th><th>Message</th><th>Expected</th><th>Actual</th></tr></thead><tbody>';
+                let html = '<table><thead><tr><th>Testcase</th><th>Message</th><th>Expected</th><th>Actual</th></tr></thead><tbody>';
                 let message;
                 for (message of messages) {
                     html += '<tr>';
