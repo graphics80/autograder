@@ -13244,12 +13244,15 @@
                         log(color.red(`❌ ${test.name}`));
                         if (error instanceof TestOutputError) {
                             output.outcome = 'error';
-                            output.message = error.message;
+                            output.message = error.text;
                             output.actual = error.actual;
                         }
 
                         if (error instanceof Error) {
                             core.setFailed(error.message);
+                            output.outcome = 'error';
+                            output.message = error.text;
+                            output.actual = error.actual;
                         } else {
                             core.setFailed(`Failed to run test '${test.name}'`);
                         }
@@ -13268,6 +13271,7 @@
                     log('✨🌟💖💎🦄💎💖🌟✨🌟💖💎🦄💎💖🌟✨');
                     log('');
                 }
+                core.setOutput('Messages', messages);
                 exportTable(messages);
                 // Set the number of points
                 if (hasPoints) {
@@ -13294,7 +13298,7 @@
                     html += '</tr>';
                 }
                 html += '</tbody></table>';
-                core.setOutput('Messages', html);
+                core.setOutput('Feedback', html);
             }
             exports.exportTable = exportTable;
 
