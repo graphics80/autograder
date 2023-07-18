@@ -13244,7 +13244,7 @@
                         log(color.red(`❌ ${test.name}`));
                         if (error instanceof TestOutputError) {
                             output.outcome = 'error';
-                            output.message = error.message;
+                            output.message = error.text;
                             output.actual = error.actual;
                         }
 
@@ -13268,6 +13268,7 @@
                     log('✨🌟💖💎🦄💎💖🌟✨🌟💖💎🦄💎💖🌟✨');
                     log('');
                 }
+                core.setOutput('Messages', messages);
                 exportTable(messages);
                 // Set the number of points
                 if (hasPoints) {
@@ -13294,7 +13295,7 @@
                     html += '</tr>';
                 }
                 html += '</tbody></table>';
-                core.setOutput('Messages', html);
+                core.setOutput('Feedback', html);
             }
             exports.exportTable = exportTable;
 
