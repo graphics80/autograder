@@ -13219,7 +13219,7 @@
                 for (const test of tests) {
                     let output = new TestOutputResult(test.name);
                     try {
-                        output.expected = test.expected;
+                        output.expected = normalizeLineEndings(test.output || '');
                         if (test.points) {
                             hasPoints = true;
                             availablePoints += test.points;
