@@ -13285,19 +13285,19 @@
             exports.runAll = runAll;
 
             const exportTable = async (messages) => {
-                let html = '<table><thead><tr><th>Testcase</th><th>Message</th><th>Expected</th><th>Actual</th></tr></thead><tbody>';
+                let html = '%3Ctable%3E%3Cthead%3E%3Ctr%3E%3Cth%3ETestcase%3C/th%3E%3Cth%3EMessage%3C/th%3E%3Cth%3EExpected%3C/th%3E%3Cth%3EActual%3C/th%3E%3C/tr%3E%3C/thead%3E%3Ctbody%3E';
                 let message;
                 for (message of messages) {
-                    html += '<tr>';
-                    html += '<td>' + message.testcase + '</td>';
-                    html += '<td>' + message.message + '</td>';
-                    html += '<td>' + message.expected + '</td>';
-                    html += '<td>' + message.actual + '</td>';
-                    html += '<td>' + message.points + '</td>';
-                    html += '<td>' + message.max + '</td>';
-                    html += '</tr>';
+                    html += '%3Ctr%3E';
+                    html += '%3Ctd%3E' + message.testcase + '%3C/td%3E';
+                    html += '%3Ctd%3E' + message.message + '%3C/td%3E';
+                    html += '%3Ctd%3E' + message.expected + '%3C/td%3E';
+                    html += '%3Ctd%3E' + message.actual + '%3C/td%3E';
+                    html += '%3Ctd%3E' + message.points + '%3C/td%3E';
+                    html += '%3Ctd%3E' + message.max + '%3C/td%3E';
+                    html += '%3C/tr%3E';
                 }
-                html += '</tbody></table>';
+                html += '%3C/tbody%3E%3C/table%3E';
                 core.setOutput('Feedback', html);
             }
             exports.exportTable = exportTable;
