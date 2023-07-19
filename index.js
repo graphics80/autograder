@@ -13242,17 +13242,18 @@
                         failed = true;
                         log('');
                         log(color.red(`❌ ${test.name}`));
-                        if (error instanceof TestOutputError) {
-                            output.outcome = 'error';
-                            output.message = error.text;
-                            output.actual = error.actual;
-                        }
 
                         if (error instanceof Error) {
                             core.setFailed(error.message);
-                            output.outcome = 'severe error';
-                            output.message = error.message;
-                            output.actual = 'no output available';
+                            if (error instanceof TestOutputError) {
+                                output.outcome = 'error';
+                                output.message = error.text.split(/\r?\n/)[0];
+                                output.actual = error.actual;
+                            } else {
+                                output.outcome = 'severe error';
+                                output.message = 'check GitHub actions for error message';
+                                output.actual = 'no output available';
+                            }
                         } else {
                             core.setFailed(`Failed to run test '${test.name}'`);
                         }
@@ -13272,7 +13273,7 @@
                     log('');
                 }
                 core.setOutput('Messages', messages);
-                exportTable(messages);
+                //exportTable(messages);
                 // Set the number of points
                 if (hasPoints) {
                     const text = `Points ${points}/${availablePoints}`;
